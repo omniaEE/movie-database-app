@@ -53,6 +53,25 @@ module.exports = {
       textColor: {
         "green-text": "#56BC80",
       },
+      dropShadow: {
+        businessman: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          lg: "4rem",
+          xl: "5rem",
+          "2xl": "6rem",
+        },
+        maxWidth: {
+          sm: "640px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1280px",
+        },
+      },
     },
   },
   darkMode: "class",
