@@ -3,14 +3,15 @@ import { Dialog } from '@headlessui/react'; // Importing UI components from Head
 import { motion, AnimatePresence } from 'framer-motion'; // Importing Framer Motion for animations
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'; // Importing icons from Heroicons
 import DarkModeToggle from '../DarkMode/DarkMode'; // Importing the dark mode toggle component
-import logo from"../../assets/movie.png";
+import logo from "../../assets/movie.png"; // Replace with your logo path
+
 const Navbar = () => {
   // State to manage the open/close state of the mobile menu
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-primary-600 dark:bg-gray-800 dark:text-white">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 space-x-6"> {/* Added space-x-6 for horizontal spacing */}
+    <header className="bg-primary-500 dark:bg-gray-800 dark:text-white shadow-lg fixed w-full z-10"> {/* Fixed position for navbar */}
+      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"> 
         {/* Logo section */}
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -24,17 +25,12 @@ const Navbar = () => {
         </div>
 
         {/* Search area */}
-        <div className="hidden lg:flex lg:flex-1 justify-center px-6"> {/* Added px-6 for internal padding */}
+        <div className="flex lg:flex-1 justify-center px-6"> {/* Show search bar in both mobile and desktop */}
           <input
             type="text"
             placeholder="Search movies..."
             className="w-full max-w-lg px-4 py-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
           />
-        </div>
-
-        {/* Dark mode toggle */}
-        <div className="flex items-center space-x-4"> {/* Added space-x-4 for spacing between items */}
-          <DarkModeToggle />
         </div>
 
         {/* Mobile menu button */}
@@ -50,6 +46,11 @@ const Navbar = () => {
             <Bars3Icon aria-hidden="true" className="h-10 w-10 text-neutral-800 dark:text-white" />
           </motion.button>
         </div>
+
+        {/* Dark mode toggle (desktop only) */}
+        <div className="hidden lg:flex items-center space-x-4"> {/* Show only on desktop */}
+          <DarkModeToggle />
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -58,13 +59,13 @@ const Navbar = () => {
           <Dialog
             open={mobileMenuOpen}
             onClose={() => setMobileMenuOpen(false)}
-            className="lg:hidden "
+            className="lg:hidden"
           >
             {/* DialogPanel with animation */}
             <motion.div
-              initial={{ y: '-100% - 128px', opacity: 0 }} // Initial state
+              initial={{ y: '-100%', opacity: 0 }} // Initial state
               animate={{ y: 0, opacity: 1 }} // Animate to visible state
-              exit={{ y: '-100% - 128px', opacity: 0 }} // Exit animation
+              exit={{ y: '-100%', opacity: 0 }} // Exit animation
               transition={{ duration: 0.3 }} // Animation duration
               className="fixed inset-0 z-10 overflow-y-auto"
             >
@@ -75,7 +76,7 @@ const Navbar = () => {
                     <span className="sr-only">Your Company</span>
                     <img
                       alt="logo"
-                      src="https://i.ibb.co/LNL5WX9/Ellipse-129.png"
+                      src={logo}
                       className="h-20 w-auto"
                     />
                   </a>
@@ -91,13 +92,9 @@ const Navbar = () => {
                   </motion.button>
                 </div>
 
-                {/* Search area in mobile menu */}
+                {/* Dark mode toggle in mobile menu */}
                 <div className="mt-6">
-                  <input
-                    type="text"
-                    placeholder="Search movies..."
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
-                  />
+                  <DarkModeToggle />
                 </div>
               </Dialog.Panel>
             </motion.div>

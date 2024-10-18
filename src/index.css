@@ -50,6 +50,12 @@
   padding: 0;
   box-sizing: border-box; /* Ensures padding and border are included in element's width and height */
 }
+.input:focus {
+  outline: none;
+  border-color: #04AE95; /* Change to your primary color */
+  box-shadow: 0 0 0 2px rgba(4, 174, 149, 0.5);
+}
+
 body {
   font-family: 'Poppins';
 }
