@@ -1,13 +1,12 @@
-import { useState } from 'react'
 import './App.css'
+import Navbar from './components/layouts/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className='bg-primary-700 h-32'>
-      </div>
+    <Navbar/>
+     
        
     </>
   )

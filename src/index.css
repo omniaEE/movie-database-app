@@ -45,7 +45,11 @@
   --pure-white: #ffffff;
   --pure-black: #000000;
 }
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in element's width and height */
+}
 body {
   font-family: 'Poppins';
 }
