@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroImage from "../../assets/MovieHero.png"; // Replace with your hero image
+import heroImage from "../../assets/MovieHero3.png"; // Replace with your hero image
 import logo from "../../assets/victor.png"; // Replace with your logo image
 
 const HomeHero = () => {

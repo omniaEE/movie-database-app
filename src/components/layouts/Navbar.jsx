@@ -5,22 +5,22 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import DarkModeToggle from '../DarkMode/DarkMode';
 import logo from "../../assets/movie.png";
 
-const Navbar = ({ searchQuery, setSearchQuery }) => {
+const Navbar = ({ setSearchQuery }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
-  const handleSearchKeyPress = (e) => {
-    if (e.key === "Enter") {
-      // Submit search on "Enter" key press
-      setSearchQuery(e.target.value);
+  // Handle search input
+  const handleSearch = (e) => {
+    if (e.key === 'Enter') {
+      setSearchQuery(inputValue); // Set the search query on Enter press
     }
   };
 
   return (
     <header className="bg-primary-500 dark:bg-gray-800 dark:text-white shadow-lg fixed w-full z-10">
-      <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
             <img alt="logo" src={logo} className="h-20 w-auto" />
           </a>
         </div>
@@ -29,8 +29,9 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
           <input
             type="text"
             placeholder="Search movies..."
-            defaultValue={searchQuery} // Reflect the current search query
-            onKeyPress={handleSearchKeyPress} // Call when user presses "Enter"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)} // Update input value
+            onKeyDown={handleSearch} // Trigger search on Enter
             className="w-full max-w-lg px-4 py-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-white"
           />
         </div>
@@ -43,7 +44,7 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            <Bars3Icon aria-hidden="true" className="h-10 w-10 text-neutral-800 dark:text-white" />
+            <Bars3Icon className="h-10 w-10 text-neutral-800 dark:text-white" />
           </motion.button>
         </div>
 
@@ -54,11 +55,7 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
 
       <AnimatePresence>
         {mobileMenuOpen && (
-          <Dialog
-            open={mobileMenuOpen}
-            onClose={() => setMobileMenuOpen(false)}
-            className="lg:hidden"
-          >
+          <Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden">
             <motion.div
               initial={{ y: '-100%', opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -78,10 +75,12 @@ const Navbar = ({ searchQuery, setSearchQuery }) => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
-                    <XMarkIcon aria-hidden="true" className="h-8 w-8 text-neutral-800 dark:text-white" />
+                    <XMarkIcon className="h-8 w-8 text-neutral-800 dark:text-white" />
                   </motion.button>
                 </div>
-                <DarkModeToggle />
+                <div className="mt-6">
+                  <DarkModeToggle />
+                </div>
               </Dialog.Panel>
             </motion.div>
           </Dialog>
