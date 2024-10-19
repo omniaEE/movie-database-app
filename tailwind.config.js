@@ -17,18 +17,17 @@ module.exports = {
           900: "#081034",
         },
         secondary: {
-          50: "#FFF0EB",
-          100: "#FFD6C2",
-          200: "#FFBD99",
-          300: "#FFA36F",
-          400: "#FF8946",
-          500: "#FF6F1D",
-          600: "#DB5A00",
-          700: "#A84600",
-          800: "#753100",
-          900: "#421D00",
+          50: "#F3F4F6", // Lightest grayish
+          100: "#E1E3E8", // Very light
+          200: "#C6C8D0", // Light neutral
+          300: "#A6A9B5", // Soft, muted gray-blue
+          400: "#868B99", // Mid-tone secondary (Main button color)
+          500: "#6C7080", // Slightly darker
+          600: "#525564", // Darker, neutral tone
+          700: "#3B3D4D", // Strong contrast for darker backgrounds
+          800: "#292A3B", // Darker gray-blue
+          900: "#1A1B28", // Almost black
         },
-
         neutral: {
           50: "#F2F2F2",
           100: "#E3E3E3",
@@ -52,6 +51,7 @@ module.exports = {
       },
       textColor: {
         "green-text": "#56BC80",
+        "yelo-text": "#FFB941",
       },
       dropShadow: {
         businessman: "0px 4px 4px rgba(0, 0, 0, 0.25)",
